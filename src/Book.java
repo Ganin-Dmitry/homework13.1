@@ -28,7 +28,19 @@ public class Book {
 
     @Override
     public String toString () {
-        return "Название: " + this.title + "\nАвтор: " + this.author.toString() + "\nГод публикации: " + this.yearOfPublication;
+        return "Название: " + this.getTitle() + "\nАвтор: " + this.author.toString() + "\nГод публикации: " + this.getYearOfPublication();
+    }
+
+    @Override
+    public int hashCode () {
+        return java.util.Objects.hash(this.toString());
+    }
+
+    public boolean equals (Book book) {
+        if (this.getClass() != book.getClass()) {
+            return false;
+        }
+        return this.getAuthor().equals(book.getAuthor()) && this.getTitle().equals(book.getTitle()) && this.getYearOfPublication() == book.getYearOfPublication();
     }
 
 }

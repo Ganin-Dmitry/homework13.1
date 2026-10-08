@@ -18,7 +18,19 @@ public class Author {
 
     @Override
     public String toString () {
-        return this.firstName + " " + this.lastName;
+        return this.getFirstName() + " " + this.getLastName();
+    }
+
+    @Override
+    public int hashCode () {
+        return java.util.Objects.hash(this.toString());
+    }
+
+    public boolean equals(Author author) {
+        if (this.getClass() != author.getClass()) {
+            return false;
+        }
+        return this.getFirstName().equals(author.getFirstName()) && this.getLastName().equals(author.getLastName()) && this.hashCode() == author.hashCode();
     }
 
 }
